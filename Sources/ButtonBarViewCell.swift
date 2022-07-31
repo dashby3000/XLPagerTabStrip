@@ -45,8 +45,12 @@ open class ButtonBarViewCell: UICollectionViewCell {
             super.isSelected = newValue
             if (newValue) {
                 accessibilityTraits.insert(.selected)
+                if #available(iOS 13.0, *) {
+                    imageView.tintColor = .label
+                }
             } else {
                 accessibilityTraits.remove(.selected)
+                imageView.tintColor = .systemGray
             }
         }
     }
