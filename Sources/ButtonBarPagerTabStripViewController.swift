@@ -231,6 +231,9 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
 
             let cells = cellForItems(at: [oldIndexPath, newIndexPath], reloadIfNotVisible: collectionViewDidLoad)
             changeCurrentIndex(cells.first!, cells.last!, true)
+            
+            ((cells.first!)!).isSelected = false
+            ((cells.last!)!).isSelected = true
         }
     }
 
@@ -243,6 +246,9 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
 
             let cells = cellForItems(at: [oldIndexPath, newIndexPath], reloadIfNotVisible: collectionViewDidLoad)
             changeCurrentIndexProgressive(cells.first!, cells.last!, progressPercentage, indexWasChanged, true)
+            
+            ((cells.first!)!).isSelected = false
+            ((cells.last!)!).isSelected = true
         }
     }
 
@@ -286,7 +292,8 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         let newIndexPath = IndexPath(item: indexPath.item, section: 0)
 
         let cells = cellForItems(at: [oldIndexPath, newIndexPath], reloadIfNotVisible: collectionViewDidLoad)
-
+        ((cells.first!)!).isSelected = false
+        
         if pagerBehaviour.isProgressiveIndicator {
             if let changeCurrentIndexProgressive = changeCurrentIndexProgressive {
                 changeCurrentIndexProgressive(cells.first!, cells.last!, 1, true, true)
